@@ -7,23 +7,13 @@ import Image from "next/image"
 import { ChevronDown, MessageCircle, Menu, X, ChevronRight, ChevronLeft } from "lucide-react"
 
 type MenuLevel = "main" | "nepal" | "about" | "nepal-category"
-type NepalCategory =
-  | "trekking"
-  | "climbing"
-  | "cultural"
-  | "cycling"
-  | "luxury-treks"
-  | "luxury-tours"
-  | "day-trips"
-  | "multi-country"
-  | "voluntourism"
-  | "extend-trip"
+type NepalCategory = "annapurna" | "everest" | "langtang"
 
 export function Navbar() {
   const [activeMenu, setActiveMenu] = useState<null | "nepal" | "about">(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [mobileMenuLevel, setMobileMenuLevel] = useState<MenuLevel>("main")
-  const [selectedNepalCategory, setSelectedNepalCategory] = useState("Trekking in Nepal")
+  const [selectedNepalCategory, setSelectedNepalCategory] = useState("ANNAPURNA TREKKING PACKAGES")
   const [selectedMobileCategory, setSelectedMobileCategory] = useState<NepalCategory | null>(null)
   const menuRef = useRef<HTMLDivElement>(null)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
@@ -104,61 +94,39 @@ export function Navbar() {
 
   // Nepal menu categories
   const nepalCategories = [
-    { id: "trekking" as NepalCategory, name: "Trekking in Nepal" },
-    { id: "climbing" as NepalCategory, name: "Climbing and Expedition" },
-    { id: "cultural" as NepalCategory, name: "Cultural Tour and Sightseeing" },
-    { id: "cycling" as NepalCategory, name: "Cycling and Mountain Biking" },
-    { id: "luxury-treks" as NepalCategory, name: "Luxury Treks" },
-    { id: "luxury-tours" as NepalCategory, name: "Luxury Tours" },
-    { id: "day-trips" as NepalCategory, name: "Day Trips" },
-    { id: "multi-country" as NepalCategory, name: "Multi Country Tours" },
-    { id: "voluntourism" as NepalCategory, name: "Voluntourism Trips" },
-    { id: "extend-trip" as NepalCategory, name: "Extend Your Trip" },
+    { id: "annapurna" as NepalCategory, name: "Annapurna Trekking Packages" },
+    { id: "everest" as NepalCategory, name: "Everest Trekking Packages" },
+    { id: "langtang" as NepalCategory, name: "Langtang / Gosaikunda Trekking Packages" },
   ]
 
-  // Trekking options
-  const trekkingOptions = [
-    "Everest View Heli Trek – 8 Days",
-    "Everest Panorama Trek – 9 Days",
-    "Everest Base Camp Heli Trek – 11 Days",
-    "EBC Trek with Helicopter Return – 12 Days",
-    "Everest Base Camp Trek – 14 Days",
-    "Gokyo Lake Trek – 13 Days",
-    "Gokyo and Renjo La Pass Trek – 14 Days",
-    "Everest Base Camp Trek without Lukla Flight – 17 Days",
-    "Gokyo to Everest Base Camp Trek – 17 Days",
-    "Everest Base Camp with Island Peak – 19 Days",
-    "Everest Three Passes Trek – 20 Days",
-    "Everest High Passes and Island Peak – 23 Days",
-    "Classical Everest Base Camp Trek – 21 Days",
-    "Langtang Valley Trek – 10 Days",
+  // Trekking options for Annapurna region
+  const annapurnaTreks = [
+    "Annapurna Base Camp Trek",
+    "Annapurna Circuit Trek",
+    "Ghorepani / Poon Hill Mini-Circuit Trek",
+    "Mardi Himal Trek",
+    "Nar Phu Valley Trek",
   ]
 
-  // Climbing options
-  const climbingOptions = [
-    "Yala Peak Climbing – 13 Days",
-    "Island Peak Climbing – 15 Days",
-    "Mera Peak Climbing – 19 Days",
-    "Everest Base Camp and Lobuche East – 18 Days",
-    "Tent Peak Climbing with Annapurna Base Camp – 18 Days",
-    "Pisang Peak and Thorung La Pass – 21 Days",
-    "Ama Dablam Expedition – 29 Days",
+  // Trekking options for Everest region
+  const everestTreks = ["Everest Base Camp Trek", "Gokyo Lake Trek", "Everest Three Passes Trek"]
+
+  // Trekking options for Langtang/Gosaikunda region
+  const langtangTreks = [
+    "Langtang Valley Trek",
+    "Langtang Heritage Trek",
+    "Langtang Gosaikunda Trek",
+    "Langtang Gosaikunda and Hellambu Trek",
   ]
 
   // About Us menu items
   const aboutUsItems = [
-    { name: "About Us", href: "/about" },
-    { name: "Meet Our Team", href: "/team" },
-    { name: "Why Ace?", href: "/why-ace" },
-    { name: "CSI", href: "/csi" },
-    { name: "Our Affiliations", href: "/affiliations" },
-    { name: "Legal Documents", href: "/legal" },
-    { name: "Terms and Conditions", href: "/terms" },
-    { name: "Our Fleets", href: "/fleets" },
-    { name: "Awards and Achievements", href: "/awards" },
-    { name: "Customer Reviews", href: "/reviews" },
-    { name: "Video Reviews", href: "/video-reviews" },
-    { name: "Contact Us", href: "/contact" },
+    { name: "About Us", href: "/company/about" },
+    { name: "Meet Our Team", href: "/company/team" },
+    { name: "Why NHA?", href: "/company/why-nha" },
+    { name: "Legal Documents", href: "/company/documents" },
+    { name: "Terms and Conditions", href: "/company/terms" },
+    { name: "Customer Reviews", href: "/company/reviews" },
   ]
 
   return (
@@ -206,12 +174,12 @@ export function Navbar() {
                       {/* Right Content */}
                       <div className="w-2/3 p-6">
                         <h3 className="text-lg font-semibold mb-4">{selectedNepalCategory}</h3>
-                        {selectedNepalCategory === "Trekking in Nepal" && (
-                          <div className="grid grid-cols-2 gap-2">
-                            {trekkingOptions.map((trek, index) => (
+                        {selectedNepalCategory === "ANNAPURNA TREKKING PACKAGES" && (
+                          <div className="grid grid-cols-1 gap-2">
+                            {annapurnaTreks.map((trek, index) => (
                               <Link
                                 key={index}
-                                href={`/nepal/trekking/${trek.toLowerCase().replace(/\s+/g, "-")}`}
+                                href={`/nepal/annapurna/${trek.toLowerCase().replace(/\s+/g, "-").replace(/\//g, "-")}`}
                                 className="text-sm hover:text-blue-600 py-1"
                                 onClick={() => setActiveMenu(null)}
                               >
@@ -220,24 +188,34 @@ export function Navbar() {
                             ))}
                           </div>
                         )}
-                        {selectedNepalCategory === "Climbing and Expedition" && (
-                          <div className="grid grid-cols-2 gap-2">
-                            {climbingOptions.map((climb, index) => (
+                        {selectedNepalCategory === "EVEREST TREKKING PACKAGES" && (
+                          <div className="grid grid-cols-1 gap-2">
+                            {everestTreks.map((trek, index) => (
                               <Link
                                 key={index}
-                                href={`/nepal/climbing/${climb.toLowerCase().replace(/\s+/g, "-")}`}
+                                href={`/nepal/everest/${trek.toLowerCase().replace(/\s+/g, "-")}`}
                                 className="text-sm hover:text-blue-600 py-1"
                                 onClick={() => setActiveMenu(null)}
                               >
-                                {climb}
+                                {trek}
                               </Link>
                             ))}
                           </div>
                         )}
-                        {selectedNepalCategory !== "Trekking in Nepal" &&
-                          selectedNepalCategory !== "Climbing and Expedition" && (
-                            <p className="text-gray-600">Content for {selectedNepalCategory} coming soon...</p>
-                          )}
+                        {selectedNepalCategory === "LANGTANG / GOSAIKUNDA TREKKING PACKAGES" && (
+                          <div className="grid grid-cols-1 gap-2">
+                            {langtangTreks.map((trek, index) => (
+                              <Link
+                                key={index}
+                                href={`/nepal/langtang/${trek.toLowerCase().replace(/\s+/g, "-")}`}
+                                className="text-sm hover:text-blue-600 py-1"
+                                onClick={() => setActiveMenu(null)}
+                              >
+                                {trek}
+                              </Link>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -250,7 +228,7 @@ export function Navbar() {
                   onClick={() => toggleMenu("about")}
                   className="flex items-center gap-1 text-lg text-white hover:text-blue-400 px-4 py-3 rounded transition-colors duration-200 focus:outline-none"
                 >
-                  About Us <ChevronDown className="w-4 h-4" />
+                  Company <ChevronDown className="w-4 h-4" />
                 </button>
                 {activeMenu === "about" && (
                   <div
@@ -272,32 +250,27 @@ export function Navbar() {
                   </div>
                 )}
               </div>
-            {/* Contact Us */}
+              {/* Contact Us */}
               <Link
                 href="/contact"
-                className="text-white text-lg  hover:text-blue-400 px-3 py-2 rounded transition-colors duration-200"
+                className="text-white text-lg hover:text-blue-400 px-3 py-2 rounded transition-colors duration-200"
               >
                 Contact Us
               </Link>
             </div>
 
-
             {/* Right side - WhatsApp Contact */}
-<a
-        href="https://wa.me/9771234567899"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="hidden md:flex items-center group"
-      >
-        <div className="flex items-center space-x-2 bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg transition-colors duration-200 cursor-pointer">
-          {/* WhatsApp Icon */}
-          <div className="w-7 h-6 bg-white rounded-full flex items-center justify-center">
-            <MessageCircle className="h-4 w-4 text-[#25D366]" fill="currentColor" />
-          </div>
-          <span className="text-white font-medium text-sm">+9771234567899</span>
-        </div>
-      </a>
-
+            <a
+              href="https://wa.me/97798512337IO"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:flex items-center gap-2 hover:opacity-90 transition-opacity"
+            >
+              <div className="w-8 h-8 bg-[#25D366] rounded-full flex items-center justify-center">
+                <MessageCircle className="w-5 h-5 text-white" fill="currentColor" />
+              </div>
+              <span className="text-white font-medium text-lg">+97798512337IO</span>
+            </a>
 
             {/* Mobile menu button */}
             <div className="md:hidden mr-4">
@@ -346,7 +319,7 @@ export function Navbar() {
                     <ChevronRight className="w-5 h-5 text-gray-400" />
                   </button>
 
-                                    <Link
+                  <Link
                     href="/contact"
                     className="block px-6 py-4 text-lg font-medium border-b border-gray-100 hover:bg-gray-50"
                     onClick={closeMobileMenu}
@@ -412,8 +385,8 @@ export function Navbar() {
                 </div>
               )}
 
-              {/* Nepal Category Detail Level - Trekking */}
-              {mobileMenuLevel === "nepal-category" && selectedMobileCategory === "trekking" && (
+              {/* Nepal Category Detail Level - Annapurna */}
+              {mobileMenuLevel === "nepal-category" && selectedMobileCategory === "annapurna" && (
                 <div>
                   <div className="flex items-center justify-between px-4 py-4 border-b border-gray-200 bg-gray-50">
                     <button onClick={goBackToNepal} className="flex items-center text-gray-600 hover:text-gray-800">
@@ -426,14 +399,14 @@ export function Navbar() {
                   </div>
 
                   <div className="px-6 py-4 border-b border-gray-200">
-                    <h3 className="text-lg font-semibold">Trekking in Nepal</h3>
+                    <h3 className="text-lg font-semibold">ANNAPURNA TREKKING PACKAGES</h3>
                   </div>
 
                   <div className="py-2">
-                    {trekkingOptions.map((trek, index) => (
+                    {annapurnaTreks.map((trek, index) => (
                       <Link
                         key={index}
-                        href={`/nepal/trekking/${trek.toLowerCase().replace(/\s+/g, "-")}`}
+                        href={`/nepal/annapurna/${trek.toLowerCase().replace(/\s+/g, "-").replace(/\//g, "-")}`}
                         className="block px-6 py-3 text-gray-600 hover:bg-gray-50 border-b border-gray-50"
                         onClick={closeMobileMenu}
                       >
@@ -444,8 +417,8 @@ export function Navbar() {
                 </div>
               )}
 
-              {/* Nepal Category Detail Level - Climbing */}
-              {mobileMenuLevel === "nepal-category" && selectedMobileCategory === "climbing" && (
+              {/* Nepal Category Detail Level - Everest */}
+              {mobileMenuLevel === "nepal-category" && selectedMobileCategory === "everest" && (
                 <div>
                   <div className="flex items-center justify-between px-4 py-4 border-b border-gray-200 bg-gray-50">
                     <button onClick={goBackToNepal} className="flex items-center text-gray-600 hover:text-gray-800">
@@ -458,47 +431,55 @@ export function Navbar() {
                   </div>
 
                   <div className="px-6 py-4 border-b border-gray-200">
-                    <h3 className="text-lg font-semibold">Climbing and Expedition</h3>
+                    <h3 className="text-lg font-semibold">EVEREST TREKKING PACKAGES</h3>
                   </div>
 
                   <div className="py-2">
-                    {climbingOptions.map((climb, index) => (
+                    {everestTreks.map((trek, index) => (
                       <Link
                         key={index}
-                        href={`/nepal/climbing/${climb.toLowerCase().replace(/\s+/g, "-")}`}
+                        href={`/nepal/everest/${trek.toLowerCase().replace(/\s+/g, "-")}`}
                         className="block px-6 py-3 text-gray-600 hover:bg-gray-50 border-b border-gray-50"
                         onClick={closeMobileMenu}
                       >
-                        {climb}
+                        {trek}
                       </Link>
                     ))}
                   </div>
                 </div>
               )}
 
-              {/* Other Nepal categories - placeholder */}
-              {mobileMenuLevel === "nepal-category" &&
-                selectedMobileCategory !== "trekking" &&
-                selectedMobileCategory !== "climbing" && (
-                  <div>
-                    <div className="flex items-center justify-between px-4 py-4 border-b border-gray-200 bg-gray-50">
-                      <button onClick={goBackToNepal} className="flex items-center text-gray-600 hover:text-gray-800">
-                        <ChevronLeft className="w-5 h-5 mr-1" />
-                        Back
-                      </button>
-                      <button onClick={closeMobileMenu} className="text-gray-600 hover:text-gray-800">
-                        <X className="w-5 h-5" />
-                      </button>
-                    </div>
-
-                    <div className="px-6 py-4">
-                      <h3 className="text-lg font-semibold mb-4">
-                        {nepalCategories.find((cat) => cat.id === selectedMobileCategory)?.name}
-                      </h3>
-                      <p className="text-gray-600">Content coming soon...</p>
-                    </div>
+              {/* Nepal Category Detail Level - Langtang */}
+              {mobileMenuLevel === "nepal-category" && selectedMobileCategory === "langtang" && (
+                <div>
+                  <div className="flex items-center justify-between px-4 py-4 border-b border-gray-200 bg-gray-50">
+                    <button onClick={goBackToNepal} className="flex items-center text-gray-600 hover:text-gray-800">
+                      <ChevronLeft className="w-5 h-5 mr-1" />
+                      Back
+                    </button>
+                    <button onClick={closeMobileMenu} className="text-gray-600 hover:text-gray-800">
+                      <X className="w-5 h-5" />
+                    </button>
                   </div>
-                )}
+
+                  <div className="px-6 py-4 border-b border-gray-200">
+                    <h3 className="text-lg font-semibold">LANGTANG / GOSAIKUNDA TREKKING PACKAGES</h3>
+                  </div>
+
+                  <div className="py-2">
+                    {langtangTreks.map((trek, index) => (
+                      <Link
+                        key={index}
+                        href={`/nepal/langtang/${trek.toLowerCase().replace(/\s+/g, "-")}`}
+                        className="block px-6 py-3 text-gray-600 hover:bg-gray-50 border-b border-gray-50"
+                        onClick={closeMobileMenu}
+                      >
+                        {trek}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </div>
