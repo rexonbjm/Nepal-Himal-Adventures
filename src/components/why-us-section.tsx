@@ -90,12 +90,12 @@ export function WhyUsSection() {
 
         {/* Call to Action */}
         <div className="text-center">
-          <Link href="/about">
+          <Link href="/company/why-nha">
             <Button
               size="lg"
               className="bg-gradient-to-r bg-[#f2b203] hover:bg-[#e6a700] text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             >
-              Discover Our Story
+              Find Out More
             </Button>
           </Link>
         </div>
