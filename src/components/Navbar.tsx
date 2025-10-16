@@ -13,7 +13,7 @@ export function Navbar() {
   const [activeMenu, setActiveMenu] = useState<null | "nepal" | "about">(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [mobileMenuLevel, setMobileMenuLevel] = useState<MenuLevel>("main")
-  const [selectedNepalCategory, setSelectedNepalCategory] = useState("ANNAPURNA TREKKING PACKAGES")
+  const [selectedNepalCategory, setSelectedNepalCategory] = useState<NepalCategory | null>(null)
   const [selectedMobileCategory, setSelectedMobileCategory] = useState<NepalCategory | null>(null)
   const menuRef = useRef<HTMLDivElement>(null)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
@@ -21,6 +21,9 @@ export function Navbar() {
 
   const toggleMenu = (menu: "nepal" | "about") => {
     setActiveMenu((prev) => (prev === menu ? null : menu))
+    if (activeMenu === menu) {
+      setSelectedNepalCategory(null)
+    }
   }
 
   const closeMobileMenu = () => {
@@ -73,6 +76,7 @@ export function Navbar() {
 
       if (menuRef.current && !menuRef.current.contains(target)) {
         setActiveMenu(null)
+        setSelectedNepalCategory(null)
       }
 
       if (mobileMenuOpen && mobileMenuRef.current && !mobileMenuRef.current.contains(target)) {
@@ -94,9 +98,9 @@ export function Navbar() {
 
   // Nepal menu categories
   const nepalCategories = [
-    { id: "annapurna" as NepalCategory, name: "Annapurna Trekking Packages" },
-    { id: "everest" as NepalCategory, name: "Everest Trekking Packages" },
-    { id: "langtang" as NepalCategory, name: "Langtang / Gosaikunda Trekking Packages" },
+    { id: "annapurna" as NepalCategory, name: "Annapurna Trekking Packages", href: "/nepal/annapurna" },
+    { id: "everest" as NepalCategory, name: "Everest Trekking Packages", href: "/nepal/everest" },
+    { id: "langtang" as NepalCategory, name: "Langtang / Gosaikunda Trekking Packages", href: "/nepal/langtang" },
   ]
 
   // Trekking options for Annapurna region
@@ -158,12 +162,19 @@ export function Navbar() {
                   >
                     <div className="flex">
                       <div className="w-1/3 bg-gray-50 border-r">
+                        <Link
+                          href="/nepal"
+                          onClick={() => setActiveMenu(null)}
+                          className="block w-full text-left px-4 py-3 hover:bg-gray-100 border-b border-gray-200"
+                        >
+                          All Packages in Nepal
+                        </Link>
                         {nepalCategories.map((category) => (
                           <button
                             key={category.id}
-                            onClick={() => setSelectedNepalCategory(category.name)}
+                            onClick={() => setSelectedNepalCategory(category.id)}
                             className={`w-full text-left px-4 py-3 hover:bg-gray-100 border-b border-gray-200 flex items-center justify-between ${
-                              selectedNepalCategory === category.name ? "bg-blue-50 text-blue-600" : ""
+                              selectedNepalCategory === category.id ? "bg-blue-50 text-blue-600" : ""
                             }`}
                           >
                             {category.name}
@@ -171,49 +182,63 @@ export function Navbar() {
                           </button>
                         ))}
                       </div>
-                      {/* Right Content */}
                       <div className="w-2/3 p-6">
-                        <h3 className="text-lg font-semibold mb-4">{selectedNepalCategory}</h3>
-                        {selectedNepalCategory === "ANNAPURNA TREKKING PACKAGES" && (
-                          <div className="grid grid-cols-1 gap-2">
-                            {annapurnaTreks.map((trek, index) => (
-                              <Link
-                                key={index}
-                                href={`/nepal/annapurna/${trek.toLowerCase().replace(/\s+/g, "-").replace(/\//g, "-")}`}
-                                className="text-sm hover:text-blue-600 py-1"
-                                onClick={() => setActiveMenu(null)}
-                              >
-                                {trek}
-                              </Link>
-                            ))}
+                        {selectedNepalCategory === null && (
+                          <div>
+                            <p className="text-sm text-gray-600">
+                              Select a trekking region from the left to view available packages.
+                            </p>
                           </div>
                         )}
-                        {selectedNepalCategory === "EVEREST TREKKING PACKAGES" && (
-                          <div className="grid grid-cols-1 gap-2">
-                            {everestTreks.map((trek, index) => (
-                              <Link
-                                key={index}
-                                href={`/nepal/everest/${trek.toLowerCase().replace(/\s+/g, "-")}`}
-                                className="text-sm hover:text-blue-600 py-1"
-                                onClick={() => setActiveMenu(null)}
-                              >
-                                {trek}
-                              </Link>
-                            ))}
+                        {selectedNepalCategory === "annapurna" && (
+                          <div>
+                            <h3 className="text-lg font-semibold mb-4">Annapurna Trekking Packages</h3>
+                            <div className="grid grid-cols-1 gap-2">
+                              {annapurnaTreks.map((trek, index) => (
+                                <Link
+                                  key={index}
+                                  href={`/nepal/annapurna/${trek.toLowerCase().replace(/\s+/g, "-").replace(/\//g, "-")}`}
+                                  className="text-sm hover:text-blue-600 py-1"
+                                  onClick={() => setActiveMenu(null)}
+                                >
+                                  {trek}
+                                </Link>
+                              ))}
+                            </div>
                           </div>
                         )}
-                        {selectedNepalCategory === "LANGTANG / GOSAIKUNDA TREKKING PACKAGES" && (
-                          <div className="grid grid-cols-1 gap-2">
-                            {langtangTreks.map((trek, index) => (
-                              <Link
-                                key={index}
-                                href={`/nepal/langtang/${trek.toLowerCase().replace(/\s+/g, "-")}`}
-                                className="text-sm hover:text-blue-600 py-1"
-                                onClick={() => setActiveMenu(null)}
-                              >
-                                {trek}
-                              </Link>
-                            ))}
+                        {selectedNepalCategory === "everest" && (
+                          <div>
+                            <h3 className="text-lg font-semibold mb-4">Everest Trekking Packages</h3>
+                            <div className="grid grid-cols-1 gap-2">
+                              {everestTreks.map((trek, index) => (
+                                <Link
+                                  key={index}
+                                  href={`/nepal/everest/${trek.toLowerCase().replace(/\s+/g, "-")}`}
+                                  className="text-sm hover:text-blue-600 py-1"
+                                  onClick={() => setActiveMenu(null)}
+                                >
+                                  {trek}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                        {selectedNepalCategory === "langtang" && (
+                          <div>
+                            <h3 className="text-lg font-semibold mb-4">Langtang / Gosaikunda Trekking Packages</h3>
+                            <div className="grid grid-cols-1 gap-2">
+                              {langtangTreks.map((trek, index) => (
+                                <Link
+                                  key={index}
+                                  href={`/nepal/langtang/${trek.toLowerCase().replace(/\s+/g, "-")}`}
+                                  className="text-sm hover:text-blue-600 py-1"
+                                  onClick={() => setActiveMenu(null)}
+                                >
+                                  {trek}
+                                </Link>
+                              ))}
+                            </div>
                           </div>
                         )}
                       </div>
@@ -343,6 +368,14 @@ export function Navbar() {
                   </div>
 
                   <div className="py-2">
+                    <Link
+                      href="/nepal"
+                      className="block px-6 py-4 hover:bg-gray-50 border-b border-gray-100"
+                      onClick={closeMobileMenu}
+                    >
+                      <span className="font-medium">All Packages in Nepal</span>
+                    </Link>
+
                     {nepalCategories.map((category) => (
                       <button
                         key={category.id}
@@ -399,7 +432,7 @@ export function Navbar() {
                   </div>
 
                   <div className="px-6 py-4 border-b border-gray-200">
-                    <h3 className="text-lg font-semibold">ANNAPURNA TREKKING PACKAGES</h3>
+                    <h3 className="text-lg font-semibold">Annapurna Trekking Packages</h3>
                   </div>
 
                   <div className="py-2">
@@ -431,7 +464,7 @@ export function Navbar() {
                   </div>
 
                   <div className="px-6 py-4 border-b border-gray-200">
-                    <h3 className="text-lg font-semibold">EVEREST TREKKING PACKAGES</h3>
+                    <h3 className="text-lg font-semibold">Everest Trekking Packages</h3>
                   </div>
 
                   <div className="py-2">
@@ -463,7 +496,7 @@ export function Navbar() {
                   </div>
 
                   <div className="px-6 py-4 border-b border-gray-200">
-                    <h3 className="text-lg font-semibold">LANGTANG / GOSAIKUNDA TREKKING PACKAGES</h3>
+                    <h3 className="text-lg font-semibold">Langtang / Gosaikunda Trekking Packages</h3>
                   </div>
 
                   <div className="py-2">
