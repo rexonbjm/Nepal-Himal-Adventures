@@ -1,3 +1,5 @@
+'use client'
+
 import { Shield, Users, DollarSign, Heart, Mountain, Award, Leaf, Clock } from "lucide-react"
 
 export default function WhyNHA() {
@@ -6,7 +8,7 @@ export default function WhyNHA() {
       icon: Mountain,
       title: "Local Himalayan Experts",
       description:
-        "Born and raised in the shadow of the Himalayas, our guides possess intimate knowledge of every trail, village, and peak. We don't just guide treks—we share our home with you.",
+        "Born and raised in the shadow of the Himalayas, our guides possess intimate knowledge of every trail, village, and peak. We don&apos;t just guide treks—we share our home with you.",
     },
     {
       icon: Shield,
@@ -36,13 +38,13 @@ export default function WhyNHA() {
       icon: Award,
       title: "Proven Track Record",
       description:
-        "Years of experience leading successful treks across Nepal's most challenging terrain. Our reputation is built on countless satisfied adventurers who return home with stories of a lifetime.",
+        "Years of experience leading successful treks across Nepal&apos;s most challenging terrain. Our reputation is built on countless satisfied adventurers who return home with stories of a lifetime.",
     },
     {
       icon: Leaf,
       title: "Sustainable & Responsible",
       description:
-        "We're committed to preserving the pristine beauty of the Himalayas. Our treks support local communities, minimize environmental impact, and promote responsible tourism practices.",
+        "We&apos;re committed to preserving the pristine beauty of the Himalayas. Our treks support local communities, minimize environmental impact, and promote responsible tourism practices.",
     },
     {
       icon: Clock,
@@ -51,9 +53,7 @@ export default function WhyNHA() {
         "From the moment you book until you return home safely, our team is available around the clock. With international representatives across multiple continents, help is always within reach.",
     },
   ]
-          // <p className="text-lg md:text-xl text-slate-200 leading-relaxed text-pretty">
-  // 
-//  <p className="text-base md:text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed">
+
   return (
     <div className="pt-18 lg:pt-22 min-h-screen bg-background">
       {/* Hero Section */}
@@ -62,7 +62,7 @@ export default function WhyNHA() {
           <h1 className="text-2xl md:text-4xl font-bold white mb-6">Why Choose Nepal Himal Adventures?</h1>
           <div className="w-20 h-1 rounded-2xl bg-[#f2b203] mx-auto mb-6"></div>
           <p className="text-md md:text-xl text-slate-200 leading-relaxed text-pretty">
-            When you trek with us, you're not just another tourist. You're joining a family of mountain enthusiasts who
+            When you trek with us, you&apos;re not just another tourist. You&apos;re joining a family of mountain enthusiasts who
             are passionate about sharing the magic of the Himalayas with kindred spirits.
           </p>
         </div>

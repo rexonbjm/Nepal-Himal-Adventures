@@ -49,7 +49,7 @@ export default function FAQSection() {
 
         {/* FAQ Accordion */}
         <div className="border border-gray-200 rounded-lg overflow-hidden">
-          {faqData.map((faq, index) => (
+          {faqData.map((faq) => (
             <div key={faq.id} className="border-b border-gray-200 last:border-b-0">
               <button
                 onClick={() => toggleItem(faq.id)}

@@ -1,3 +1,7 @@
+'use client'
+
+import React from 'react'
+
 export default function TermsAndConditions() {
   return (
     <div className="min-h-screen bg-white">
@@ -18,8 +22,8 @@ export default function TermsAndConditions() {
               Our tours, treks, and expeditions can vary from easy to challenging, however, a certain level of fitness
               is essential for most trips in Nepal. Any traveler with pre-existing health conditions, including but not
               limited to knee, ankle, heart, or lungs, should seek medical advice and doctor approval prior to booking a
-              trip with Nepal Himal Adventures. It shall be the traveler's responsibility to properly inform Nepal Himal
-              Adventures of any health concerns, conditions, and/or doctor's approval in advance of booking a trip.
+              trip with Nepal Himal Adventures. It shall be the traveler&apos;s responsibility to properly inform Nepal Himal
+              Adventures of any health concerns, conditions, and/or doctor&apos;s approval in advance of booking a trip.
             </p>
           </section>
 
@@ -29,7 +33,7 @@ export default function TermsAndConditions() {
               In order to secure a booking with Nepal Himal Adventures, each traveler shall deposit a non-refundable
               $200 (USD) payment as follows: 1) Bank wire transfer into account of Nepal Himal Adventures at Mega Bank
               Nepal Limited in Kathmandu; and 2) Deposit shall be made a minimum of sixty (60) days in advance of trip.
-              This deposit will be applied to the trip's remaining balance due. You may pay your remaining balance via
+              This deposit will be applied to the trip&apos;s remaining balance due. You may pay your remaining balance via
               cash, credit card (Visa or MasterCard only) or wire transfer. Please note: banks may charge 4% extra for
               any bank card payment.
             </p>
@@ -38,7 +42,7 @@ export default function TermsAndConditions() {
           <section>
             <h2 className="text-2xl font-bold mb-3">COMPLAINTS</h2>
             <p className="text-lg leading-relaxed">
-              Nepal's rural, agricultural, and mountainous regions may be lacking or not be at a standard that you may
+              Nepal&apos;s rural, agricultural, and mountainous regions may be lacking or not be at a standard that you may
               be accustomed to in terms of infrastructure, accommodation, transportation, communication, medical
               facilities, etc. Nepal Himal Adventures may not have recourse in these situations and cannot rectify any
               deficiencies encountered during your trip.
@@ -63,7 +67,7 @@ export default function TermsAndConditions() {
             <h2 className="text-2xl font-bold mb-3">ITINERARY CHANGE</h2>
             <p className="text-lg leading-relaxed">
               The itinerary provided by Nepal Himal Adventures can be altered by the Group Leader contingent on
-              mitigating factors that best serve the group. The modification can be contingent upon the group's fitness
+              mitigating factors that best serve the group. The modification can be contingent upon the group&apos;s fitness
               levels, weather, accessibility, etc. However, the Group Leader will consult his guests prior to making any
               changes to the itinerary.
             </p>
@@ -109,7 +113,7 @@ export default function TermsAndConditions() {
               </p>
               <p>
                 2) Nepal Himal Adventures will not be liable for any emergency medical expenses while on trip.
-                Traveler's Insurance policy shall be utilized to cover any incurred expenses, including emergency
+                Traveler&apos;s Insurance policy shall be utilized to cover any incurred expenses, including emergency
                 evacuation.
               </p>
               <p>
@@ -118,7 +122,7 @@ export default function TermsAndConditions() {
               </p>
               <p>
                 4) Nepal Himal Adventures shall not be held responsible for any failure to obtain required permits due
-                to traveler's possessing valid documents.
+                to traveler&apos;s possessing valid documents.
               </p>
               <p>
                 5) Nepal Himal Adventures has the right to terminate anyone of their involvement in the trip considering
@@ -173,10 +177,11 @@ export default function TermsAndConditions() {
               altitude environments. We will at all times give our best to make sure that you have a wonderful trip.
             </p>
           </section>
+
           <section>
-               <p className="text-lg leading-relaxed">
-                    We wish you all the best.
-               </p>
+            <p className="text-lg leading-relaxed">
+              We wish you all the best.
+            </p>
           </section>
         </div>
       </div>

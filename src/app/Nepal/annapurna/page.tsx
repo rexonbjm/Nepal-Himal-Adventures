@@ -140,8 +140,14 @@ const trekData = {
   },
 }
 
-export default function TrekDetailPage({ params }: { params: { id: string } }) {
-  const trek = trekData[params.id as unknown as keyof typeof trekData]
+export default async function TrekDetailPage({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}) {
+  // Await the params in Next.js 15+
+  const { id } = await params
+  const trek = trekData[id as unknown as keyof typeof trekData]
 
   if (!trek) {
     return <div>Trek not found</div>

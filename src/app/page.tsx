@@ -1,5 +1,5 @@
 "use client";
-import { Search, Star, Award, Leaf, Users } from "lucide-react";
+import { Search, Award, Leaf, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useRotatingText } from "@/hooks/use-rotating-text";
@@ -39,7 +39,6 @@ export default function HomePage() {
                          </div>
 
                          {/* Search Bar */}
-
                          <div className="relative w-full max-w-2xl md:mb-3">
                               <Input
                                    type="text"
@@ -56,11 +55,11 @@ export default function HomePage() {
                     </div>
 
                     {/* Bottom Stats Section */}
-                    <div className="absolute bottom-0 left-0 right-0  ">
-                         <div className="max-w-xl mx-auto px-4 py-8 ">
-                              <div className="  grid grid-cols-2  md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                    <div className="absolute bottom-0 left-0 right-0">
+                         <div className="max-w-xl mx-auto px-4 py-8">
+                              <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                                    <div className="flex flex-col items-center">
-                                        <Users className=" h-8 w-8 text-white mb-3" />
+                                        <Users className="h-8 w-8 text-white mb-3" />
                                         <div className="text-white font-bold text-lg">
                                              4 Years+
                                         </div>
@@ -69,7 +68,7 @@ export default function HomePage() {
                                         </div>
                                    </div>
 
-                                   <div className="flex flex-col items-center ">
+                                   <div className="flex flex-col items-center">
                                         <Award className="h-8 w-8 text-white mb-2" />
                                         <div className="text-white font-bold text-lg">
                                              Best Price
@@ -78,7 +77,8 @@ export default function HomePage() {
                                              Guaranteed
                                         </div>
                                    </div>
-                                   <div className=" flex-col items-center hidden md:flex">
+
+                                   <div className="flex-col items-center hidden md:flex">
                                         <Leaf className="h-8 w-8 text-white mb-2" />
                                         <div className="text-white font-bold text-lg">
                                              Committed To
@@ -115,7 +115,6 @@ export default function HomePage() {
 
                {/* Book Adventure CTA */}
                <BookAdventureCTA />
-
           </div>
      );
 }
