@@ -76,7 +76,7 @@ export function ReviewsSection() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % totalSlides)
-    }, 5000) // Change slide every 5 seconds
+    }, 5000)
 
     return () => clearInterval(interval)
   }, [totalSlides])
@@ -187,11 +187,11 @@ export function ReviewsSection() {
 
                     {/* Review Text */}
                     <div className="relative">
-                      <div className="text-4xl text-gray-200 absolute -top-2 -left-2 font-serif">"</div>
+                      <div className="text-4xl text-gray-200 absolute -top-2 -left-2 font-serif">&quot;</div>
                       <p className="text-gray-700 leading-relaxed text-sm px-4 relative z-10 italic">
                         {getCurrentReviews()[0].review}
                       </p>
-                      <div className="text-4xl text-gray-200 absolute -bottom-4 -right-2 font-serif">"</div>
+                      <div className="text-4xl text-gray-200 absolute -bottom-4 -right-2 font-serif">&quot;</div>
                     </div>
                   </CardContent>
                 </Card>
@@ -217,7 +217,7 @@ export function ReviewsSection() {
                       </div>
 
                       {/* Review Text */}
-                      <p className="text-gray-700 leading-relaxed flex-1 text-sm">"{review.review}"</p>
+                      <p className="text-gray-700 leading-relaxed flex-1 text-sm">&quot;{review.review}&quot;</p>
                     </CardContent>
                   </Card>
                 ))}

@@ -1,6 +1,6 @@
 "use client"
 
-import { Phone, Mail, Clock, MapPin, MessageCircle, Headphones } from "lucide-react"
+import { Phone, Mail, Clock, MessageCircle, Headphones } from "lucide-react"
 
 export default function SpeakToExpert() {
   return (

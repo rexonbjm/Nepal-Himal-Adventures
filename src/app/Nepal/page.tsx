@@ -170,7 +170,7 @@ export default function NepalPage() {
               At Nepal Himal Adventures, we craft ambitious yet accessible journeys that go beyond the trail. Whether
               guiding you over iconic passes like Thorong La, introducing you to resilient mountain communities, or
               ensuring your safety at every altitude, we aim to deliver more than a trek—we deliver a lifelong memory.
-              Your adventure with us isn't just a hike; it's a personal story woven into the heart of the Himalayas.
+              Your adventure with us isn&apos;t just a hike; it&apos;s a personal story woven into the heart of the Himalayas.
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -180,7 +180,7 @@ export default function NepalPage() {
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="h-5 w-5 text-green-600" />
-                <span className="text-sm font-medium">World's Best Trekking</span>
+                <span className="text-sm font-medium">World&apos;s Best Trekking</span>
               </div>
               <div className="flex items-center gap-2">
                 <Heart className="h-5 w-5 text-red-600" />
@@ -198,7 +198,7 @@ export default function NepalPage() {
               <Mountain className="h-12 w-12 text-blue-600 mx-auto mb-4" />
               <h4 className="font-semibold mb-2">Majestic Himalayas</h4>
               <p className="text-gray-600 text-sm">
-                Home to the world's highest peaks including Everest, Lhotse, Makalu, and Cho Oyu
+                Home to the world&apos;s highest peaks including Everest, Lhotse, Makalu, and Cho Oyu
               </p>
             </div>
 
@@ -206,8 +206,7 @@ export default function NepalPage() {
               <Users className="h-12 w-12 text-green-600 mx-auto mb-4" />
               <h4 className="font-semibold mb-2">Authentic Village Life</h4>
               <p className="text-gray-600 text-sm">
-                Immerse yourself in Nepal's diverse culture—meet local communities, experience traditional customs, and
-                enjoy genuine hospitality.
+                Immerse yourself in Nepal&apos;s diverse culture—meet local communities, experience traditional customs, and enjoy genuine hospitality.
               </p>
             </div>
 
@@ -247,8 +246,8 @@ export default function NepalPage() {
               </p>
               <h4 className="text-xl font-semibold mb-4">Customized Adventures</h4>
               <p className="text-gray-600 mb-4">
-                Whether you're a beginner or experienced mountaineer, we customize our treks to match your fitness
-                level, interests, and time constraints. From tea house treks to camping expeditions.
+                 Whether you&apos;re a beginner or experienced mountaineer, we customize our treks to match your fitness level, interests, and time constraints.
+
               </p>
             </div>
           </div>
@@ -368,7 +367,7 @@ export default function NepalPage() {
         <div className="text-center mt-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl p-12">
           <h3 className="text-3xl font-bold mb-4">Ready for Your Himalayan Adventure?</h3>
           <p className="text-xl mb-8 opacity-90">
-            Let Nepal Himal Adventures guide you through the world's most spectacular mountain landscapes
+            Let Nepal Himal Adventures guide you through the world&apos;s most spectacular mountain landscapes
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button

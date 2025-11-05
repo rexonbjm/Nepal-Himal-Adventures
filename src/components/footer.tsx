@@ -2,9 +2,8 @@ import Link from "next/link"
 import Image from "next/image"
 import { Phone, Mail, MapPin, Facebook, Instagram, Twitter, Youtube } from "lucide-react"
 
-export default function Component() {
+export default function Footer() {
   return (
-    
     <footer className="bg-slate-800 text-white">
       <div className="container mx-auto px-6 py-12">
         {/* Desktop Layout - 5 columns */}
@@ -13,7 +12,7 @@ export default function Component() {
           <div>
             <Image src="/logo.jpg" alt="Company Logo" width={250} height={100} className="h-24 w-auto mb-4" />
             <p className="text-gray-300 text-sm mb-4">
-              Experience the difference with Nepal's premier adventure company. Your epic journey awaits in the majestic
+              Experience the difference with Nepal&apos;s premier adventure company. Your epic journey awaits in the majestic
               Himalayas.
             </p>
             <div className="flex space-x-3">
@@ -70,7 +69,7 @@ export default function Component() {
               </li>
               <li>
                 <Link href="#" className="text-gray-300 hover:text-yellow-400 transition-colors text-sm">
-                  Climbing & Expedition
+                  Climbing &amp; Expedition
                 </Link>
               </li>
               <li>
@@ -107,7 +106,7 @@ export default function Component() {
               </li>
               <li>
                 <Link href="#" className="text-gray-300 hover:text-yellow-400 transition-colors text-sm">
-                  Awards & Achievements
+                  Awards &amp; Achievements
                 </Link>
               </li>
               <li>
@@ -120,7 +119,7 @@ export default function Component() {
 
           {/* Contact & Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Contact & Info</h4>
+            <h4 className="text-lg font-semibold mb-4">Contact &amp; Info</h4>
             <div className="space-y-3 mb-6">
               <div className="flex items-center text-sm text-gray-300">
                 <Phone className="h-4 w-4 mr-2 text-yellow-400" />
@@ -143,7 +142,7 @@ export default function Component() {
               </li>
               <li>
                 <Link href="#" className="text-gray-300 hover:text-yellow-400 transition-colors text-sm">
-                  Terms & Conditions
+                  Terms &amp; Conditions
                 </Link>
               </li>
               <li>

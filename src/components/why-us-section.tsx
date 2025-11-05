@@ -2,29 +2,30 @@
 import { Mountain, Shield, Heart, Users, Award, Calendar } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { useState, useEffect } from "react"
+// import { useState, useEffect } from "react"
 
 export function WhyUsSection() {
-  const [isMobile, setIsMobile] = useState(false)
-  const [showAllCards, setShowAllCards] = useState(false)
+  // const [isMobile, setIsMobile] = useState(false)
 
-  // Check if mobile
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
+    
+  // // Check if mobile
+  // useEffect(() => {
+  //   const checkMobile = () => {
+      
+  //     setIsMobile(window.innerWidth < 768)
+  //   }
 
-    checkMobile()
-    window.addEventListener("resize", checkMobile)
-    return () => window.removeEventListener("resize", checkMobile)
-  }, [])
+  //   checkMobile()
+  //   window.addEventListener("resize", checkMobile)
+  //   return () => window.removeEventListener("resize", checkMobile)
+  // }, [])
 
   const features = [
     {
       icon: <Mountain className="h-8 w-8 text-blue-600" />,
       title: "Nepal Mountain Specialists",
       description:
-        "Born from the heart of the Himalayas, our local expertise and deep connection to Nepal's mountains ensures authentic experiences that only true locals can provide.",
+        "Born from the heart of the Himalayas, our local expertise and deep connection to Nepal&apos;s mountains ensures authentic experiences that only true locals can provide.",
     },
     {
       icon: <Shield className="h-8 w-8 text-green-600" />,
@@ -36,7 +37,7 @@ export function WhyUsSection() {
       icon: <Heart className="h-8 w-8 text-red-600" />,
       title: "Community-Centered Impact",
       description:
-        "Every trek supports local communities. We believe in responsible tourism that preserves Nepal's natural beauty while empowering the people who call these mountains home.",
+        "Every trek supports local communities. We believe in responsible tourism that preserves Nepal&apos;s natural beauty while empowering the people who call these mountains home.",
     },
     {
       icon: <Users className="h-8 w-8 text-purple-600" />,
@@ -54,7 +55,7 @@ export function WhyUsSection() {
       icon: <Calendar className="h-8 w-8 text-indigo-600" />,
       title: "Flexible Departures",
       description:
-        "Adventure waits for no one. With flexible scheduling and guaranteed departures, we make it easy to embark on your Himalayan journey when you're ready.",
+        "Adventure waits for no one. With flexible scheduling and guaranteed departures, we make it easy to embark on your Himalayan journey when you&apos;re ready.",
     },
   ]
 
@@ -64,17 +65,17 @@ export function WhyUsSection() {
         {/* Header */}
         <div className="text-center mb-10">
           <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-6">Why Nepal Himal Adventures?</h2>
-          <div className="w-23 h-1 rounded bg-[#f2b203]  mx-auto mb-6"></div>
+          <div className="w-23 h-1 rounded bg-[#f2b203] mx-auto mb-6"></div>
           <p className="text-base md:text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed">
-            Since 2023, we've been your gateway to Nepal's magnificent Himalayas. With passionate local experts and an
+            Since 2023, we&apos;ve been your gateway to Nepal&apos;s magnificent Himalayas. With passionate local experts and an
             unwavering commitment to sustainable tourism, we create transformative adventures that connect you deeply
-            with Nepal's breathtaking landscapes and rich culture.
+            with Nepal&apos;s breathtaking landscapes and rich culture.
           </p>
         </div>
 
         {/* Features Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {(isMobile && !showAllCards ? features.slice(0, 3) : features).map((feature, index) => (
+          {features.map((feature, index) => (
             <div
               key={index}
               className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"

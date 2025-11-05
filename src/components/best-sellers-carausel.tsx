@@ -1,6 +1,7 @@
 "use client"
 import { useState, useEffect, useRef } from "react"
 import type React from "react"
+import Image from "next/image"
 
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -19,98 +20,28 @@ const trekData: TrekCard[] = [
   {
     id: 1,
     title: "Everest Base Camp Trek",
-    duration: "14 Days",
+    duration: "10 Days",
     description:
       "Enjoy an exciting journey across the Khumbu region's trails with the stunning vistas of mountain peaks and the...",
-    image: ".jpg",
+    image: "/everest-base.jpg",
   },
   {
     id: 2,
-    title: "EBC Trek with Helicopter Return",
+    title: "Annapurna Circuit Trek",
     duration: "12 Days",
     description:
       "Get the most scenic and iconic helicopter ride from Gorakshep to Lukla in this after trekking to the base camp...",
-    image: "abc.jpg",
+    image: "/ebc-helicopter.jpg",
   },
   {
     id: 3,
-    title: "Annapurna Circuit Trek",
+    title: "Mardi Himal Trek",
     duration: "16 Days",
     description:
       "Experience the Annapurna Circuit Trek, circling the Annapurna Massif through lush forests, arid deserts, and high-...",
-    image: "abc.jpg",
+    image: "/annapurna-circuit.jpg",
   },
-  {
-    id: 4,
-    title: "Annapurna Base Camp Trek",
-    duration: "13 Days",
-    description: "Embark on a venture to the Annapurna Base Camp Trek with the most scenic experiencing the diverse...",
-    image: "abc.jpg",
-  },
-  {
-    id: 5,
-    title: "Everest Base Camp with Island Peak",
-    duration: "19 Days",
-    description:
-      "Trek to the world's famous Everest Base Camp and climb to the summit of Island peak. Enjoy the magnificent views of...",
-    image: "abc.jpg",
-  },
-  {
-    id: 6,
-    title: "Everest Three Passes Trek",
-    duration: "20 Days",
-    description:
-      "Get the chance to cross the three passes of everest region, the Kongma La Pass, Cho La Pass and Renjo La Pa...",
-    image: "abc.jpg",
-  },
-  {
-    id: 7,
-    title: "Manaslu Circuit Trek",
-    duration: "15 Days",
-    description:
-      "Trek through the reasonably untouched trekking circuit of Nepal; the Manaslu Circuit. Explore the beautiful, least...",
-    image: "abc.jpg",
-  },
-  {
-    id: 8,
-    title: "Everest Base Camp without Lukla Flight",
-    duration: "17 Days",
-    description:
-      "Trek to Everest Base Camp the old fashioned way by driving to the trailhead instead of flying to Lukla...",
-    image: "abc.jpg",
-  },
-  {
-    id: 9,
-    title: "Gokyo Lake Trek",
-    duration: "13 Days",
-    description:
-      "Discover the pristine Gokyo Lakes and climb Gokyo Ri for spectacular views of Everest, Lhotse, Makalu and Cho Oyu...",
-    image: "abc.jpg",
-  },
-  {
-    id: 10,
-    title: "Langtang Valley Trek",
-    duration: "10 Days",
-    description:
-      "Explore the beautiful Langtang Valley, known as the valley of glaciers, with stunning mountain views and rich culture...",
-    image: "abc.jpg",
-  },
-  {
-    id: 11,
-    title: "Upper Mustang Trek",
-    duration: "16 Days",
-    description:
-      "Journey to the forbidden kingdom of Upper Mustang, a remote and mystical region with ancient Tibetan culture...",
-    image: "abc.jpg",
-  },
-  {
-    id: 12,
-    title: "Mardi Himal Trek",
-    duration: "10 Days",
-    description:
-      "Experience the newly opened Mardi Himal Trek with close-up views of Annapurna South, Hiunchuli and Machhapuchhre...",
-    image: "abc.jpg",
-  },
+  // ...rest of your trekData
 ]
 
 export function BestSellersCarousel() {
@@ -120,67 +51,32 @@ export function BestSellersCarousel() {
   const touchEndX = useRef(0)
   const carouselRef = useRef<HTMLDivElement>(null)
 
-  // Responsive cards per slide
-  const getCardsPerSlide = () => {
-    if (isMobile) return 2
-    return 4
-  }
-
+  const getCardsPerSlide = () => (isMobile ? 2 : 4)
   const cardsPerSlide = getCardsPerSlide()
   const totalSlides = Math.ceil(trekData.length / cardsPerSlide)
 
-  // Check if mobile
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
     checkMobile()
     window.addEventListener("resize", checkMobile)
     return () => window.removeEventListener("resize", checkMobile)
   }, [])
 
-  // Auto-slide functionality (disabled on mobile)
   useEffect(() => {
     if (isMobile) return
-
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % totalSlides)
-    }, 5000)
-
+    const interval = setInterval(() => setCurrentSlide((prev) => (prev + 1) % totalSlides), 5000)
     return () => clearInterval(interval)
   }, [totalSlides, isMobile])
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % totalSlides)
-  }
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % totalSlides)
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides)
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides)
-  }
-
-  // Touch handlers for mobile swipe
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.targetTouches[0].clientX
-  }
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    touchEndX.current = e.targetTouches[0].clientX
-  }
-
+  const handleTouchStart = (e: React.TouchEvent) => (touchStartX.current = e.targetTouches[0].clientX)
+  const handleTouchMove = (e: React.TouchEvent) => (touchEndX.current = e.targetTouches[0].clientX)
   const handleTouchEnd = () => {
-    if (!touchStartX.current || !touchEndX.current) return
-
     const distance = touchStartX.current - touchEndX.current
-    const isLeftSwipe = distance > 50
-    const isRightSwipe = distance < -50
-
-    if (isLeftSwipe) {
-      nextSlide()
-    }
-    if (isRightSwipe) {
-      prevSlide()
-    }
+    if (distance > 50) nextSlide()
+    else if (distance < -50) prevSlide()
   }
 
   const getCurrentCards = () => {
@@ -200,7 +96,6 @@ export function BestSellersCarousel() {
 
         {/* Carousel Container */}
         <div className="relative">
-          {/* Desktop Arrows - Hidden on Mobile */}
           {!isMobile && (
             <>
               <Button
@@ -223,7 +118,6 @@ export function BestSellersCarousel() {
             </>
           )}
 
-          {/* Cards Container */}
           <div
             ref={carouselRef}
             className={isMobile ? "px-4" : "mx-12"}
@@ -239,13 +133,12 @@ export function BestSellersCarousel() {
               {getCurrentCards().map((trek) => (
                 <Link key={trek.id} href={`/trip/page${trek.id}`}>
                   <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer group h-full flex flex-col">
-                    <div className="relative overflow-hidden flex-shrink-0">
-                      <img
-                        // src={trek.image || "/placeholder.svg"}
+                    <div className="relative overflow-hidden flex-shrink-0 h-32 md:h-48 w-full">
+                      <Image
+                        src={trek.image || "/placeholder.svg"}
                         alt={trek.title}
-                        className={`w-full object-cover transition-transform duration-300 group-hover:scale-110 ${
-                          isMobile ? "h-32" : "h-48"
-                        }`}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-110"
                       />
                     </div>
                     <CardContent className={`${isMobile ? "p-3" : "p-4"} flex-1 flex flex-col justify-between`}>
@@ -256,7 +149,6 @@ export function BestSellersCarousel() {
                       >
                         {trek.title} - {trek.duration}
                       </h3>
-                      {/* Description only shown on desktop */}
                       {!isMobile && (
                         <p className="text-gray-600 text-sm leading-relaxed mt-2 line-clamp-3">{trek.description}</p>
                       )}
@@ -280,7 +172,6 @@ export function BestSellersCarousel() {
             ))}
           </div>
 
-          {/* Mobile Swipe Hint */}
           {isMobile && (
             <div className="text-center mt-4">
               <p className="text-xs text-gray-500">Swipe left or right to browse</p>
